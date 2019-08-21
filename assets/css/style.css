@@ -101,6 +101,7 @@ header > .container > div[class] {
 }
 
 footer {
+  margin-top: 50px;
   border-top: 1px solid #eee;
   display: block;
   padding: 50px;
