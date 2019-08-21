@@ -1,0 +1,14 @@
+{
+  "name": "hikidev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "style": "sass --watch dist/sass/main.sass assets/css/style.css"
+  },
+  "keywords": [
+    "hikidev"
+  ],
+  "author": "hikimo",
+  "license": "ISC"
+}
