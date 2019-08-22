@@ -32,7 +32,7 @@ nav .container .logo .sub {
   color: #3498db;
 }
 nav .container .logo, nav .container .sub {
-  font-family: Baloo;
+  font-family: Baloo, cursive;
 }
 
 header {
@@ -50,7 +50,7 @@ header > .container > div[class] {
 }
 
 .name {
-  font-family: Baloo;
+  font-family: Baloo, cursive;
   font-size: 42px;
   font-weight: normal;
   letter-spacing: 1px;
@@ -114,7 +114,7 @@ footer .content .name {
   color: #2c3e50;
 }
 footer .content .name .sub {
-  font-family: Baloo;
+  font-family: Baloo, cursive;
   color: #2980b9;
 }
 footer .content .name::after {
@@ -192,12 +192,12 @@ footer .social-links .list .links > * {
 }
 * {
   box-sizing: border-box;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: Quicksand, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 14px;
   color: #2c3e50;
 }
