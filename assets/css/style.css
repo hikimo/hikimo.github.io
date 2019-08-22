@@ -139,6 +139,7 @@ footer .social-links .list .links {
   height: 50px;
   font-size: 1.5em;
   color: #2c3e50;
+  outline: none;
 }
 footer .social-links .list .links span {
   margin-top: 2px;
