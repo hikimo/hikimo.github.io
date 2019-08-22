@@ -128,16 +128,32 @@ footer .social-links > * {
   display: block;
 }
 footer .social-links {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-footer .social-links .links {
-  height: 50px;
-  line-height: 50px;
+footer .social-links .list {
+  display: flex;
 }
-footer .social-links .links + .links {
-  margin-left: 10px;
+footer .social-links .list .links {
+  height: 50px;
+  font-size: 1.5em;
+  color: #2c3e50;
+}
+footer .social-links .list .links span {
+  margin-top: 2px;
+  font-size: 10px;
+}
+footer .social-links .list .links + .links {
+  margin-left: 30px;
+}
+footer .social-links .list .links > * {
+  transition: 0.5s ease-in-out;
+  display: block;
+}
+
+.links:hover > * {
+  color: #2980b9;
 }
 
 @media only screen and (max-width: 550px) {
@@ -171,12 +187,6 @@ footer .social-links .links + .links {
 @media only screen and (width: 414px) {
   header > * {
     width: 400px;
-  }
-}
-@media only screen and (max-width: 320px) {
-  .subtitle {
-    font-size: 12px;
-    color: green;
   }
 }
 * {

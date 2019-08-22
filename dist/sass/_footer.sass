@@ -20,14 +20,24 @@ footer
   .social-links > *
     display: block
   .social-links
-    margin-top: 10px
+    margin-top: 20px
     display: flex
     justify-content: center
-    .links
-      height: 50px
-      line-height: 50px
-      // width: 50px
-    // sementara sebelum ada iconnya pakai margin
-    .links + .links
-      margin-left: 10px
-      
+    .list
+      display: flex
+      .links
+        height: 50px
+        font-size: 1.5em
+        color: $text-color
+        span
+          margin-top: 2px
+          font-size: 10px
+      .links + .links
+        margin-left: 30px
+      .links > *
+        transition: .5s ease-in-out
+        display: block
+
+// Contact hover color
+.links:hover > *
+  color: $title-color
