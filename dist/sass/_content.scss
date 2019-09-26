@@ -147,6 +147,8 @@
       }
       .skills__percentage {
         padding-left: .5em;
+        display: flex;
+        align-self: center;
       }
       &:not(:last-child) {
         margin-bottom: 1em;

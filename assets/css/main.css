@@ -342,6 +342,8 @@
 }
 .skills-section .row .skills__group .skills__percentage {
   padding-left: 0.5em;
+  display: flex;
+  align-self: center;
 }
 .skills-section .row .skills__group:not(:last-child) {
   margin-bottom: 1em;
