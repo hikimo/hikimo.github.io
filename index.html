@@ -3,129 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Hikimo">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HikiDev Profile</title>
-  <!-- Styles -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Baloo|Poppins&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Crafty+Girls|Quicksand|Thasadith&display=swap" rel="stylesheet"> 
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <!-- Bootstrap4 CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Custom style -->
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
-  <!-- Page loader -->
+<body data-spy="scroll" data-target=".navbar" data-offset="100">
   <div class="pre-loader"></div>
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a href="javascript::void()" class="logo">Hiki<span class="sub">Dev</span></a>
+
+  <nav class="navbar navbar-expand-lg navbar-fixed bg-transparent navbar-dark">
+    <a class="navbar-brand" href="#">Hiki<span>Dev</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain"
+      aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation" onclick="openMenu()">
+      <svg class="ham hamRotate" viewBox="0 0 100 100" width="75">
+        <path
+          class="line top"
+          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+        <path
+          class="line middle"
+          d="m 30,50 h 40" />
+        <path
+          class="line bottom"
+          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+      </svg>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#profile">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#work">Works</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
     </div>
   </nav>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <!-- Intro body -->
-      <div class="intro">
-        <h1
-          data-aos="fade-right"
-          data-aos-duration="1000" 
-          class="name">Hi, I'm Hiki</h1>
-        <h2
-          data-aos="fade-right"
-          data-aos-duration="1500" 
-          class="subtitle">Front-end Developer</h2>
 
-        <!-- Introduction text -->
-        <p
-          data-aos="fade-right"
-          data-aos-duration="2000" 
-          data-aos-anchor-placement="top-bottom" 
-          class="intro-text">
-          A Front end developer from Bandar Lampung and have a good entusiasm at IT based knowledge.
-          Focus at implementing and UX.
-        </p>
-      </div>
-      
-      <!-- Profile Image -->
-      <div
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        class="profile-img">
-        <div class="img-frame">
-          <img class="img-responsive" draggable="false" src="./assets/images/me.jpg" alt="Author Picture">
-        </div>
+  <header class="hero" id="header">
+    <div class="filter">
+      <div class="hero-content">
+        <h1 class="hero-title" id="heroTitle"></h1>
       </div>
     </div>
   </header>
 
-  <!-- Project -->
-  <div class="project-div">
-    <hr>
-    <div class="no-content">
-      <p
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-anchor-placement="top-bottom"
-        class="message">
-        Whoops, look like it still empty here.<br>Come back later
-        <img src="./assets/images/icons/robot.png" alt="robot">
-      </p>
+  <section class="profile-section" id="profile">
+    <div class="container">
+      <div class="profile__frame">
+        <img src="assets/images/me.jpg" alt="Profile of me" class="profile__img">
+      </div>
+      <div class="profile__desc">
+        <p>Passionate with UI/UX Design , also known
+        working as freelancer frontend developer.
+        I’m have a good experience with Front-end
+        based work. So it will let me to help you a lot
+        at building your websites.</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div 
-      data-aos="fade-right"
-      data-aos-duration="1000"
-      data-aos-anchor-placement="top-bottom"
-      class="content">
-      <div class="name">Hiki<span class="sub">Dev</span></div>
-      <!-- Social Account -->
-      <span 
-        class="text">Feel free to contact me at these account.</span>
-      <div class="social-links">
-        <div class="list">
-          <a 
-            href="https://www.linkedin.com/in/hikidev/" 
-            target="_blank" 
-            class="links">
-            <i class="fa fa-linkedin"></i>
-            <span>linkedin</span>
-          </a>
-          <a 
-            href="https://www.facebook.com/rangga.prastio.79" 
-            target="_blank" 
-            class="links">
-            <i class="fa fa-facebook"></i>
-            <span>facebook</span>
-          </a>
-          <a 
-            href="https://www.instagram.com/rangga_prastio/" 
-            target="_blank" 
-            class="links">
-            <i class="fa fa-instagram"></i>
-            <span>instagram</span>
-          </a>
-          <a 
-            href="https://wa.me/6289615429533" 
-            target="_blank" 
-            class="links">
-            <i class="fa fa-whatsapp"></i>
-            <span>whatsapp</span>
-          </a>
+  <section class="work-section" id="work">
+    <span class="work__title-container">
+      <h3 class="work__title">How I Works</h3>
+    </span>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+          <div class="work__content">
+            <div class="work__icon">
+              <i class="fa fa-pencil-ruler"></i>
+            </div>
+            <div class="work__desc">
+              <span class="work__sub-title">Planning</span>
+              <p>
+                Before I'm working with your app, I will do some research
+                and designing some prototype. So it will help a lot and
+                do accelerate development progress. 
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+          <div class="work__content">
+            <div class="work__icon">
+              <i class="fa fa-laptop-code"></i>
+            </div>
+            <div class="work__desc">
+              <span class="work__sub-title">Development</span>
+              <p>
+                On Development step, I'm focusing to implement your app
+                logic. In this step, of course I'll do many of trials and
+                error.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+          <div class="work__content">
+            <div class="work__icon">
+              <i class="fa fa-poll"></i>
+            </div>
+            <div class="work__desc">
+              <span class="work__sub-title">Production</span>
+              <p>
+                In this step, means your app is okay and ready to owned by yourself.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <h3 class="skills__title">My Skills</h3>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="skills__group">
+            <span class="skills__name">HTML5</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 95%"></div>
+            </div>
+            <span class="skills__percentage">95%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">CSS3</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 90%"></div>
+            </div>
+            <span class="skills__percentage">90%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">JavaScript</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 85%"></div>
+            </div>
+            <span class="skills__percentage">85%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">Bootstrap 4</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 90%"></div>
+            </div>
+            <span class="skills__percentage">90%</span>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-sm-12">
+          <div class="skills__group">
+            <span class="skills__name">PHP7</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 80%"></div>
+            </div>
+            <span class="skills__percentage">80%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">RUBY</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 65%"></div>
+            </div>
+            <span class="skills__percentage">65%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">ReactJS</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 60%"></div>
+            </div>
+            <span class="skills__percentage">60%</span>
+          </div>
+          <div class="skills__group">
+            <span class="skills__name">UI/UX Design</span>
+            <div class="skills__bar">
+              <div class="skills__bar-value" style="width: 75%"></div>
+            </div>
+            <span class="skills__percentage">75%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <span class="contact__title-container">
+            <h3 class="contact__title">Contact</h3>
+          </span>
+          <div class="contact__form">
+            <form method="POST">
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" id="email" placeholder="Your e-mail here..." required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" placeholder="Make it clear what you want to say" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" class="form-control" rows="4" placeholder="Your message be here.." required></textarea>
+              </div>
+            </form>
+            <div class="form-group">
+              <div></div>
+              <button type="submit" class="btn btn-block btn-primary" onclick="sendMail()">Send Message</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+          <span class="contact__title-container">
+            <h3 class="contact__title">Address</h3>
+          </span>
+          <div class="contact__address">
+            <p>
+              Indonesia, Bandar Lampung, Kec. Langkapura
+              Kel. Billabong, Perum Billabong Jaya Blog G4
+              No. 21
+            </p>
+            <div class="contact__address-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1986.0422289687908!2d105.22681579267618!3d-5.40410440210552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s-5.4041231%2C105.2279155!5e0!3m2!1sid!2sid!4v1569494706965!5m2!1sid!2sid"
+                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer" id="footer">
+    <div class="container">
+      <span>Build with heart &copy; 2019</span>
+      <div class="social-link">
+        <a href="https://www.facebook.com/rangga.prastio.79" class="link" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://wa.me/6289615429533" class="link" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.github.com/hikimo" class="link" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/rangga_prastio/" class="link" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/hikidev/" class="link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScripts -->
-  <script 
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" 
-    crossorigin="anonymous">
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="./assets/js/index.js"></script>
+  <!-- Floating button -->
+  <a href="#header" class="floating-button smooth-scroll">
+    <i class="fa fa-angle-up"></i>
+  </a>
+
+  <!-- Toast -->
+  <div class="toast" data-autohide="true">
+    <div class="toast-header">
+      <strong class="mr-auto text-primary">Warning</strong>
+      <small class="text-muted">just now</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+      Please fill the form before clicking the button!
+    </div>
+  </div>
+
+  <!-- JQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- TypeIt JS -->
+  <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js"></script>
+  <!-- Custom js -->
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 {
-  "name": "hikidev",
+  "name": "mine",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "style": "sass --watch dist/sass/main.sass assets/css/style.css"
+    "test": "node app.js",
+    "style": "sass --watch dist/sass/main.scss assets/css/main.css"
   },
   "keywords": [
-    "hikidev"
+    "portfolio"
   ],
   "author": "hikimo",
-  "license": "ISC"
+  "license": "MIT"
 }
