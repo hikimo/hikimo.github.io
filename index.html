@@ -1,302 +1,1355 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Hikimo">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HikiDev Profile</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Crafty+Girls|Quicksand|Thasadith&display=swap" rel="stylesheet"> 
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-  <!-- Bootstrap4 CDN -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- Custom style -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <title>Rangga Prastio - Frontend Specialist & Tech Consultant</title>
+
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="style">
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+
+  <!-- DNS Prefetch for External Domains -->
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+  <!-- Critical CSS Inline -->
+  <link rel="stylesheet" type="text/css" href="./assets/loader.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Rangga Prastio - Frontend Specialist & Tech Consultant. Transforming innovative ideas into cutting-edge digital experiences. Based in West Bogor, Indonesia.">
+  <meta name="keywords"
+    content="CTO, Frontend Developer, React, Vue.js, Angular, TypeScript, Indonesia, Bogor, Bandar Lampung">
+  <meta name="author" content="Rangga Prastio">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Rangga Prastio - Frontend Specialist & Tech Consultant">
+  <meta property="og:description"
+    content="Transforming innovative ideas into cutting-edge digital experiences. Leading development teams and architecting scalable solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hikimo.github.io">
+  <meta property="og:image"
+    content="https://media.licdn.com/dms/image/v2/D5603AQG1FBTZSiDT_g/profile-displayphoto-shrink_400_400/B56Zd5iAMLG0Ak-/0/1750090647699?e=1756339200&v=beta&t=Cxyur1G-4ANFqKEyOS9ksQy34K-4POlk4oby8KMcMDA">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rangga Prastio - Frontend Specialist & Tech Consultant">
+  <meta name="twitter:description" content="Transforming innovative ideas into cutting-edge digital experiences.">
+  <script>
+    // Language Management
+    let currentLanguage = 'en';
+
+    function initLanguage() {
+      // Check URL parameters for language
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+
+      // Check localStorage for saved language preference
+      const savedLang = localStorage.getItem('language');
+
+      // Check browser language
+      const browserLang = navigator.language.startsWith('id') ? 'id' : 'en';
+
+      // Set language priority: URL param > localStorage > browser > default
+      if (langParam && (langParam === 'en' || langParam === 'id')) {
+        currentLanguage = langParam;
+      } else if (savedLang && (savedLang === 'en' || savedLang === 'id')) {
+        currentLanguage = savedLang;
+      } else {
+        currentLanguage = browserLang;
+      }
+
+      updateLanguage();
+    }
+
+    function updateLanguage() {
+      // Update HTML lang attribute for SEO
+      document.documentElement.lang = currentLanguage;
+
+      // Update page title
+      const title = 'Rangga Prastio - Frontend Specialist & Tech Consultant in Indonesia';
+      document.title = title;
+
+      // Update all elements with data-lang-key
+      document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        const keys = key.split('.');
+        let value = languageData[currentLanguage];
+
+        for (const k of keys) {
+          if (value && value[k]) {
+            value = value[k];
+          } else {
+            value = key; // Fallback to key if translation not found
+            break;
+          }
+        }
+
+        if (value && value !== key) {
+          element.textContent = value;
+        }
+      });
+
+      // Update URL without page reload
+      const url = new URL(window.location);
+      url.searchParams.set('lang', currentLanguage);
+      window.history.replaceState({}, '', url);
+
+      // Save to localStorage
+      localStorage.setItem('language', currentLanguage);
+    }
+
+    function switchLanguage(lang) {
+      if (lang === currentLanguage) return;
+      currentLanguage = lang;
+      updateLanguage();
+    }
+
+    // Language Data
+    const languageData = {
+      en: {
+        nav: {
+          home: 'Home',
+          about: 'About',
+          skills: 'Skills',
+          experience: 'Experience',
+          portfolio: 'Portfolio',
+          contact: 'Contact'
+        },
+        hero: {
+          title: 'Rangga Prastio',
+          subtitle: 'Frontend Specialist & Tech Consultant',
+          location: 'West Bogor, Indonesia',
+          description: 'I love turning ideas into real, working apps with clean interfaces and solid performance. 6+ years of experience helping teams launch faster and grow better.',
+          viewWork: 'View My Work',
+          getInTouch: 'Get In Touch',
+          availability: 'Available for freelance and collaboration (GMT+7)'
+        },
+        about: {
+          title: 'About Me',
+          subtitle: 'Passionate about technology, innovation, and building exceptional teams',
+          description1: 'Hi, I’m Rangga Prastio, a frontend engineer and tech consultant with 6+ years of experience building modern web, mobile, and desktop applications. My core focus is frontend development using React, React Native, Angular, and Tailwind, but I also work across the full stack with tools like Laravel, Express, PostgreSQL, MongoDB, Electron, and even VB.NET.',
+          description2: 'Over the past few years, I’ve led frontend teams, helped shape technical direction, and worked closely with cross-functional teams to deliver scalable and maintainable products. I enjoy solving real-world problems with clean code, thoughtful design, and strong collaboration.',
+          description3: 'I\'m open to working with teams or businesses that want to build or improve digital products. Whether it\'s launching something new or scaling an existing platform, I focus on creating reliable, user-first solutions that deliver real value.',
+          stats: {
+            experience: 'Years Experience',
+            projects: 'Projects Completed',
+            team: 'Team Members Led',
+            satisfaction: 'Client Satisfaction'
+          }
+        },
+        services: {
+          service: "Service",
+          seeMyServices: "See My Services",
+          serviceOffer: "I offer tailored solutions to help you grow, innovate, and succeed in tech.",
+
+          service1: {
+            serviceName: "Private Mentoring",
+            serviceDesc: "Personalized 1-on-1 guidance for developers of all levels. Get help with career growth, code reviews, and mastering modern web technologies.",
+            serviceCTABtn: "Book Now"
+          },
+          service2: {
+            serviceName: "Tech Consulting",
+            serviceDesc: "Clear, actionable tech insights to improve your product, process, and team. Let’s tackle challenges and unlock your next stage of growth.",
+            serviceCTABtn: "Start Consult"
+          },
+          service3: {
+            serviceName: "Software Development",
+            serviceDesc: "From MVPs to production apps, I deliver robust, scalable, and solution that suit your needs.",
+            serviceCTABtn: "Start Project"
+          }
+        },
+        skills: {
+          title: 'Technical Skills',
+          subtitle: 'Expertise across the full spectrum of modern web development',
+        },
+        experience: {
+          title: 'Work Experience',
+          subtitle: 'A journey of growth, innovation, and technical excellence',
+          workDesc: {
+            bemanagement: "Led technical strategy and development teams across multiple projects",
+            hubbly: "Led technical strategy, planning, and execution of product development",
+            nikel: "Led frontend development for company product application, team of 4 developers",
+            ept: "Modernized the codebase and set development standards. Delivered a full-featured B2B module faster",
+            mgi: "Led frontend and mobile development teams. Mentored developers and introduced standard practices",
+            salt: "Managed and delivered three simultaneous client projects. Designed user journeys for multiple campaigns. Supported mobile development team to meet critical deadlines",
+            glovory: "Built a mini POS system for local merchants. Developed mobile app for local fish market business"
+          }
+        },
+        portfolio: {
+          title: 'My Portfolio',
+          subtitle: 'A selection of my projects that showcase my skills and creativity',
+          viewCTA: "View Project",
+          privateProject: "Private Company Project",
+        },
+        contact: {
+          title: 'Get In Touch',
+          subtitle: 'Have a project in mind or just want to say hi? I\'d love to hear from you.',
+          name: 'Your Name',
+          email: 'Your Email',
+          subject: 'Subject',
+          message: 'Your Message',
+          send: 'Send Message'
+        }
+      },
+      id: {
+        nav: {
+          home: 'Beranda',
+          about: 'Tentang',
+          skills: 'Keahlian',
+          experience: 'Pengalaman',
+          portfolio: 'Portfolio',
+          contact: 'Kontak'
+        },
+        hero: {
+          title: 'Rangga Prastio',
+          subtitle: 'Spesialis Frontend & Konsultan Teknologi',
+          location: 'Bogor Barat, Indonesia',
+          description: 'Saya senang mengubah ide menjadi aplikasi nyata yang tampil rapi dan punya performa yang stabil. Lebih dari 6 tahun pengalaman membantu tim merilis produk dengan cepat dan bertumbuh lebih baik.',
+          viewWork: 'Lihat Porftolio Saya',
+          getInTouch: 'Hubungi Saya',
+          availability: 'Terbuka untuk freelance dan kolaborasi (GMT+7)'
+        },
+        about: {
+          title: 'Tentang Saya',
+          subtitle: 'Passionate dengan teknologi, inovasi, dan membangun tim yang luar biasa',
+          description1: 'Halo, saya Rangga Prastio, seorang frontend engineer dan tech consultant dengan pengalaman lebih dari 6 tahun dalam mengembangkan aplikasi web, mobile, dan desktop. Fokus utama saya adalah pengembangan frontend menggunakan React, React Native, Angular, dan Tailwind, namun saya juga berpengalaman di backend dengan Laravel, Express, PostgreSQL, MongoDB, serta aplikasi lintas platform seperti Electron dan VB.NET.',
+          description2: 'Dalam beberapa tahun terakhir, saya memimpin tim frontend, membantu menyusun arah teknis, dan bekerja sama dengan berbagai tim untuk membangun produk yang scalable dan mudah dikembangkan. Saya senang memecahkan masalah nyata dengan pendekatan yang rapi, efisien, dan kolaboratif.',
+          description3: 'Saya terbuka untuk bekerja sama dengan tim atau bisnis yang ingin membangun atau mengembangkan produk digital. Baik untuk merilis proyek baru atau mengoptimalkan platform yang sudah ada, saya fokus pada solusi yang andal, berorientasi pengguna, dan memberi dampak nyata.',
+          stats: {
+            experience: 'Tahun Pengalaman',
+            projects: 'Proyek Selesai',
+            team: 'Anggota Tim Dipimpin',
+            satisfaction: 'Kepuasan Klien'
+          }
+        },
+        services: {
+          service: "Layanan",
+          seeMyServices: "Lihat Layanan",
+          serviceOffer: "Saya menawarkan solusi yang disesuaikan untuk membantu Anda tumbuh, berinovasi, dan sukses dalam teknologi.",
+          service1: {
+            serviceName: "Mentor Privat",
+            serviceDesc: "Mentoring 1-on-1 untuk developer di semua level. Dapatkan bantuan seputar pengembangan karier, review kode, dan penguasaan teknologi web modern.",
+            serviceCTABtn: "Booking Sekarang"
+          },
+          service2: {
+            serviceName: "Konsultasi Teknologi",
+            serviceDesc: "Solusi teknis yang jelas dan bisa langsung diterapkan untuk produk, proses, dan tim. Mari selesaikan tantangan dan naik ke level berikutnya.",
+            serviceCTABtn: "Konsultasi Yuk"
+          },
+          service3: {
+            serviceName: "Software Development",
+            serviceDesc: "Dari MVP hingga production, saya memberikan solusi yang kuat, mudah dikembangkan, dan sesuai dengan kebutuhan Anda.",
+            serviceCTABtn: "Mulai Proyek"
+          }
+        },
+        skills: {
+          title: 'Keahlian Teknis',
+          subtitle: 'Menguasai lintas-spektrum dari pengembangan web modern',
+        },
+        experience: {
+          title: 'Pengalaman Kerja',
+          subtitle: 'Perjalanan pertumbuhan, inovasi, dan keunggulan teknis',
+          workDesc: {
+            bemanagement: "Memimpin strategi teknikal dan pengembangan tim lintas proyek",
+            hubbly: "Memimpin strategi teknikal, merancang, dan melakukan eskskusi pengembangan product",
+            nikel: "Memimpin pengembangan frontend untuk produk perusahaan, dengan tim dari 4 developer",
+            ept: "Modernisasi standar codebase dan set pengembangan. Deliver full fitur B2B modul lebih cepat",
+            mgi: "Memimpin tim dev frontend dan mobile. Mentoring developer dan memperkenalkan best practice",
+            salt: "Mengatur dan mendeliver tiga client secara paralel. Mendesain user journey untuk multi campaign. Support tim mobile dev mengejar timeline yang tipis",
+            glovory: "Membuat sistem mini POS untuk merchant lokal. Mengembangkan aplikasi mobile untuk usaha pasar ikan lokal"
+          }
+        },
+        portfolio: {
+          title: 'Portfolio',
+          subtitle: 'Pilihan proyek saya yang menampilkan keahlian dan kreativitas',
+          viewCTA: "Lihat Proyek",
+          privateProject: "Proyek Rahasia Perusahaan",
+        },
+        contact: {
+          title: 'Hubungi Saya',
+          subtitle: 'Ada proyek dalam pikiran atau hanya ingin menyapa? Saya ingin mendengar dari Anda.',
+          name: 'Nama Anda',
+          email: 'Email Anda',
+          subject: 'Subjek',
+          message: 'Pesan Anda',
+          send: 'Kirim Pesan'
+        }
+      },
+      jp: {
+        nav: {
+          home: 'ホーム',
+          about: '私について',
+          skills: 'スキル',
+          experience: '経験',
+          portfolio: 'ポートフォリオ',
+          contact: 'お問い合わせ'
+        },
+        hero: {
+          title: 'ランガ・プラスチヨ',
+          subtitle: 'フロントエンドスペシャリスト & 技術コンサルタント',
+          location: 'インドネシア、西ボゴール',
+          description: 'アイデアを実際のアプリに変えるのが大好きです。クリーンなUIと高いパフォーマンスを重視しながら、6年以上にわたってチームのスピードアップと成長をサポートしてきました。',
+          viewWork: '実績を見る',
+          getInTouch: 'お問い合わせ',
+          availability: 'フリーランス・コラボ募集中（GMT+7）'
+        },
+        about: {
+          title: '私について',
+          subtitle: 'テクノロジー・イノベーション・優れたチーム作りに情熱を持っています',
+          description1: 'こんにちは、ラングガ・プラスティオです。6年以上の経験を持つフロントエンドエンジニア兼技術コンサルタントです。React、React Native、Angular、Tailwindを使ったフロントエンド開発を中心に、Laravel、Express、PostgreSQL、MongoDB、Electron、VB.NETなども扱えます。',
+          description2: 'ここ数年は、フロントエンドチームのリードや技術方針の策定、他部門との協力を通じて、スケーラブルで保守しやすいプロダクトを開発してきました。クリーンなコードと丁寧な設計、そしてチームワークで現実的な課題を解決するのが得意です。',
+          description3: '新しいプロダクトを立ち上げたい、既存のプラットフォームをスケールさせたい、という企業やチームと一緒に取り組むことに興味があります。信頼性が高く、ユーザー中心で、実際に価値を生むソリューションを提供します。',
+          stats: {
+            experience: '経験年数',
+            projects: '完了したプロジェクト',
+            team: 'リードしたチーム人数',
+            satisfaction: 'クライアント満足度'
+          }
+        },
+        services: {
+          service: "サービス",
+          seeMyServices: "提供中のサービスを見る",
+          serviceOffer: "成長・イノベーション・成功をサポートする、カスタマイズされたソリューションをご提供します。",
+
+          service1: {
+            serviceName: "プライベートメンタリング",
+            serviceDesc: "全レベルの開発者向けに、キャリア相談・コードレビュー・モダンWeb技術の習得を支援します。",
+            serviceCTABtn: "今すぐ予約"
+          },
+          service2: {
+            serviceName: "技術コンサルティング",
+            serviceDesc: "プロダクトやチーム、プロセス改善のための具体的かつ実行可能な技術的アドバイスを提供します。次の成長ステージへ共に進みましょう。",
+            serviceCTABtn: "相談を始める"
+          },
+          service3: {
+            serviceName: "ソフトウェア開発",
+            serviceDesc: "MVPから本番環境のアプリまで、堅牢でスケーラブルなソリューションをお届けします。",
+            serviceCTABtn: "プロジェクト開始"
+          }
+        },
+        skills: {
+          title: '技術スキル',
+          subtitle: 'モダンWeb開発の全領域での専門性'
+        },
+        experience: {
+          title: '職務経歴',
+          subtitle: '成長・イノベーション・技術力の歩み',
+          workDesc: {
+            bemanagement: "複数のプロジェクトにわたり技術戦略と開発チームをリード",
+            hubbly: "製品開発の技術戦略・計画・実行を担当",
+            nikel: "社内アプリのフロントエンド開発をリード（4名のチーム）",
+            ept: "コードベースの近代化と開発基準を整備。B2Bモジュールを迅速に納品",
+            mgi: "フロントエンドとモバイル開発チームを指導。標準化された実践を導入",
+            salt: "3つのクライアント案件を同時に管理・納品。複数のキャンペーンでユーザージャーニーを設計。モバイル開発チームの納期達成をサポート",
+            glovory: "地元商店向けミニPOSシステムを開発。地元の魚市場向けモバイルアプリも制作"
+          }
+        },
+        portfolio: {
+          title: 'ポートフォリオ',
+          subtitle: 'スキルと創造性を示すプロジェクトのセレクション',
+          viewCTA: "プロジェクトを見る",
+          privateProject: "企業向け非公開プロジェクト"
+        },
+        contact: {
+          title: 'お問い合わせ',
+          subtitle: 'プロジェクトの相談、またはご挨拶だけでも歓迎です！お気軽にどうぞ。',
+          name: 'お名前',
+          email: 'メールアドレス',
+          subject: '件名',
+          message: 'メッセージ',
+          send: 'メッセージ送信'
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="./assets/main.css">
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="100">
-  <div class="pre-loader"></div>
 
-  <nav class="navbar navbar-expand-lg navbar-fixed bg-transparent navbar-dark">
-    <a class="navbar-brand" href="#">Hiki<span>Dev</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain"
-      aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation" onclick="openMenu()">
-      <svg class="ham hamRotate" viewBox="0 0 100 100" width="75">
-        <path
-          class="line top"
-          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
-        <path
-          class="line middle"
-          d="m 30,50 h 40" />
-        <path
-          class="line bottom"
-          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
-      </svg>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#profile">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">Works</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<body
+  class="font-loading bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden theme-transition loading">
 
-  <header class="hero" id="header">
-    <div class="filter">
-      <div class="hero-content">
-        <h1 class="hero-title" id="heroTitle"></h1>
-      </div>
-    </div>
-  </header>
-
-  <section class="profile-section" id="profile">
-    <div class="container">
-      <div class="profile__frame">
-        <img src="assets/images/me.jpg" alt="Profile of me" class="profile__img">
-      </div>
-      <div class="profile__desc">
-        <p>Passionate with UI/UX Design , also known
-        working as freelancer frontend developer.
-        I’m have a good experience with Front-end
-        based work. So it will let me to help you a lot
-        at building your websites.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="work-section" id="work">
-    <span class="work__title-container">
-      <h3 class="work__title">How I Works</h3>
-    </span>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
-          <div class="work__content">
-            <div class="work__icon">
-              <i class="fa fa-pencil-ruler"></i>
-            </div>
-            <div class="work__desc">
-              <span class="work__sub-title">Planning</span>
-              <p>
-                Before I'm working with your app, I will do some research
-                and designing some prototype. So it will help a lot and
-                do accelerate development progress. 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
-          <div class="work__content">
-            <div class="work__icon">
-              <i class="fa fa-laptop-code"></i>
-            </div>
-            <div class="work__desc">
-              <span class="work__sub-title">Development</span>
-              <p>
-                On Development step, I'm focusing to implement your app
-                logic. In this step, of course I'll do many of trials and
-                error.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-12 d-flex justify-content-center">
-          <div class="work__content">
-            <div class="work__icon">
-              <i class="fa fa-poll"></i>
-            </div>
-            <div class="work__desc">
-              <span class="work__sub-title">Production</span>
-              <p>
-                In this step, means your app is okay and ready to owned by yourself.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="skills-section" id="skills">
-    <div class="container">
-      <h3 class="skills__title">My Skills</h3>
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <div class="skills__group">
-            <span class="skills__name">HTML5</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 95%"></div>
-            </div>
-            <span class="skills__percentage">95%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">CSS3</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 90%"></div>
-            </div>
-            <span class="skills__percentage">90%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">JavaScript</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 85%"></div>
-            </div>
-            <span class="skills__percentage">85%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">Bootstrap 4</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 90%"></div>
-            </div>
-            <span class="skills__percentage">90%</span>
-          </div>
-        </div>
-        
-        <div class="col-md-6 col-sm-12">
-          <div class="skills__group">
-            <span class="skills__name">PHP7</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 80%"></div>
-            </div>
-            <span class="skills__percentage">80%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">RUBY</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 65%"></div>
-            </div>
-            <span class="skills__percentage">65%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">ReactJS</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 60%"></div>
-            </div>
-            <span class="skills__percentage">60%</span>
-          </div>
-          <div class="skills__group">
-            <span class="skills__name">UI/UX Design</span>
-            <div class="skills__bar">
-              <div class="skills__bar-value" style="width: 75%"></div>
-            </div>
-            <span class="skills__percentage">75%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <span class="contact__title-container">
-            <h3 class="contact__title">Contact</h3>
-          </span>
-          <div class="contact__form">
-            <form method="POST">
-              <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="Your e-mail here..." required>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" class="form-control" id="subject" placeholder="Make it clear what you want to say" required>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" class="form-control" rows="4" placeholder="Your message be here.." required></textarea>
-              </div>
-            </form>
-            <div class="form-group">
-              <div></div>
-              <button type="submit" class="btn btn-block btn-primary" onclick="sendMail()">Send Message</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-sm-12">
-          <span class="contact__title-container">
-            <h3 class="contact__title">Address</h3>
-          </span>
-          <div class="contact__address">
-            <p>
-              Indonesia, Bandar Lampung, Kec. Langkapura
-              Kel. Billabong, Perum Billabong Jaya Blog G4
-              No. 21
-            </p>
-            <div class="contact__address-map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1986.0422289687908!2d105.22681579267618!3d-5.40410440210552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s-5.4041231%2C105.2279155!5e0!3m2!1sid!2sid!4v1569494706965!5m2!1sid!2sid"
-                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <footer class="footer" id="footer">
-    <div class="container">
-      <span>Build with heart &copy; 2019</span>
-      <div class="social-link">
-        <a href="https://www.facebook.com/rangga.prastio.79" class="link" target="_blank">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://wa.me/6289615429533" class="link" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.github.com/hikimo" class="link" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.instagram.com/rangga_prastio/" class="link" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/hikidev/" class="link" target="_blank">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating button -->
-  <a href="#header" class="floating-button smooth-scroll">
-    <i class="fa fa-angle-up"></i>
-  </a>
-
-  <!-- Toast -->
-  <div class="toast" data-autohide="true">
-    <div class="toast-header">
-      <strong class="mr-auto text-primary">Warning</strong>
-      <small class="text-muted">just now</small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-    </div>
-    <div class="toast-body">
-      Please fill the form before clicking the button!
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-logo">RP</div>
+    <div class="loading-text">Initializing...</div>
+    <div class="loading-progress">
+      <div class="loading-progress-bar" id="loading-progress-bar"></div>
     </div>
   </div>
 
-  <!-- JQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- TypeIt JS -->
-  <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js"></script>
-  <!-- Custom js -->
-  <script src="assets/js/main.js"></script>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-svw">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <a href="#home" class="text-3xl font-black text-gradient-primary hover:scale-105 transition-transform">
+          RP
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex space-x-8">
+          <a href="#home"
+            class="nav-link active px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.home">Home</a>
+          <a href="#about"
+            class="nav-link px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.about">About</a>
+          <a href="#skills"
+            class="nav-link px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.skills">Skills</a>
+          <a href="#experience"
+            class="nav-link px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.experience">Experience</a>
+          <a href="#portfolio"
+            class="nav-link px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.portfolio">Portfolio</a>
+          <a href="#contact"
+            class="nav-link px-4 py-2 rounded-full text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all relative"
+            data-lang-key="nav.contact">Contact</a>
+        </nav>
+
+        <!-- Header Controls -->
+        <div class="flex items-center space-x-2 relative z-10">
+          <!-- Language Switcher -->
+          <div class="relative">
+            <button id="language-toggle"
+              class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <i class="fas fa-globe text-gray-600 dark:text-gray-300"></i>
+            </button>
+            <div id="language-dropdown"
+              class="absolute right-0 top-full mt-2 w-52 glass-effect rounded-lg shadow-lg opacity-0 invisible transition-all duration-200 z-50">
+              <button data-lang="en"
+                class="w-full px-4 py-2 text-left hover:bg-black/5 dark:hover:bg-white/10 transition-colors rounded-t-lg">
+                <span class="flag-icon flag-icon-gb mr-2"></span>English
+              </button>
+              <button data-lang="id"
+                class="w-full px-4 py-2 text-left hover:bg-black/5 dark:hover:bg-white/10 transition-colors rounded-b-lg">
+                <span class="flag-icon flag-icon-id mr-2"></span>Indonesia
+              </button>
+              <button data-lang="jp"
+                class="w-full px-4 py-2 text-left hover:bg-black/5 dark:hover:bg-white/10 transition-colors rounded-b-lg">
+                <span class="flag-icon flag-icon-jp mr-2"></span>Japan
+              </button>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle"
+            class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <i class="fas fa-sun absolute text-yellow-400 transition-all duration-300 ease-in-out"></i>
+            <i class="fas fa-moon absolute text-blue-300 transition-all duration-300 ease-in-out"></i>
+          </button>
+
+          <!-- Settings Toggle -->
+          <button id="settings-toggle"
+            class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <i
+              class="fas fa-cog text-gray-600 dark:text-gray-300 transition-transform duration-300 hover:rotate-45"></i>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="lg:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out bg-white/95 dark:bg-gray-900/95 backdrop-blur-20 border-b border-gray-200 dark:border-gray-700">
+      <nav class="px-4 pt-2 pb-6 space-y-2">
+        <a href="#home"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.home">Home</a>
+        <a href="#about"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.about">About</a>
+        <a href="#skills"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.skills">Skills</a>
+        <a href="#experience"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.experience">Experience</a>
+        <a href="#portfolio"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.portfolio">Portfolio</a>
+        <a href="#contact"
+          class="block px-4 py-3 rounded-lg text-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          data-lang-key="nav.contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 3D Canvas Background -->
+  <div id="canvas-container" class="fixed inset-0 -z-10"></div>
+
+  <!-- Main Content -->
+  <main class="relative z-10 pt-20">
+    <!-- Hero Section -->
+    <section id="home"
+      class="min-h-screen flex items-center justify-center py-8 pt-12 md:py-0 px-4 sm:px-6 lg:px-8 section-animate">
+      <div class="max-w-7xl w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Hero Text -->
+          <div class="text-center lg:text-left">
+            <h1
+              class="text-5xl sm:text-6xl lg:text-7xl font-black pb-6 text-gradient-primary animate-glow leading-tight"
+              data-lang-key="hero.title">
+              Rangga Prastio
+            </h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 mb-4">
+              <span
+                class="inline-block bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full px-4 py-1 text-sm font-semibold shadow-sm"
+                data-lang-key="hero.availability">
+                >
+                Available for freelance and collaboration (GMT+7)
+              </span>
+            </div>
+            <span
+              class="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full px-4 py-1 text-sm font-medium mb-6"
+              data-lang-key="hero.location">
+              Based in Bogor & Bandar Lampung, Indonesia
+            </span>
+            <p class="text-xl sm:text-2xl lg:text-3xl font-semibold mb-8 text-gradient-secondary"
+              data-lang-key="hero.subtitle">
+              Frontend Developer
+            </p>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-12 leading-relaxed max-w-2xl"
+              data-lang-key="hero.description">
+              Transforming innovative ideas into cutting-edge digital experiences.
+              Leading development teams and architecting scalable solutions that
+              drive business growth and technological advancement.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+              <a href="#portfolio"
+                class="btn-primary px-8 py-4 rounded-full font-semibold gradient-primary text-white hover:scale-105 hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-3">
+                <i class="fas fa-rocket"></i>
+                <span data-lang-key="hero.viewWork">View My Work</span>
+              </a>
+              <a href="#contact"
+                class="btn-secondary px-8 py-4 rounded-full font-semibold glass-effect hover:scale-105 hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-3">
+                <i class="fas fa-envelope"></i>
+                <span data-lang-key="hero.getInTouch">Get In Touch</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Photo -->
+          <div class="flex justify-center">
+            <div class="relative">
+              <div id="photo-container"
+                class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full gradient-primary p-1 cursor-pointer hover:scale-110 transition-all duration-500 transform-gpu">
+                <div class="absolute inset-0 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <div
+                    class="absolute inset-0 rounded-full animate-rotate bg-gradient-conic from-transparent via-blue-500 to-transparent">
+                  </div>
+                </div>
+                <div
+                  class="relative w-full h-full rounded-full bg-black dark:bg-gray-900 flex items-center justify-center overflow-hidden">
+                  <div class="text-8xl gradient-accent rounded-full w-full h-full flex items-center justify-center">
+                    <img
+                      src="https://media.licdn.com/dms/image/v2/D5603AQG1FBTZSiDT_g/profile-displayphoto-shrink_400_400/B56Zd5iAMLG0Ak-/0/1750090647699?e=1756339200&v=beta&t=Cxyur1G-4ANFqKEyOS9ksQy34K-4POlk4oby8KMcMDA"
+                      alt="Rangga Prastio" loading="lazy" decoding="async" onload="this.style.opacity='1'"
+                      style="opacity: 0; transition: opacity 0.3s ease;">
+                  </div>
+                </div>
+                <!-- Magic Particles -->
+                <div class="absolute inset-0 pointer-events-none">
+                  <div class="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-float"
+                    style="animation-delay: 0s;"></div>
+                  <div class="absolute top-1/3 right-1/6 w-1 h-1 bg-white rounded-full animate-float"
+                    style="animation-delay: 0.5s;"></div>
+                  <div class="absolute bottom-1/4 left-1/6 w-1 h-1 bg-white rounded-full animate-float"
+                    style="animation-delay: 1s;"></div>
+                  <div class="absolute bottom-1/3 right-1/4 w-1 h-1 bg-white rounded-full animate-float"
+                    style="animation-delay: 1.5s;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (add Fun Fact card) -->
+    <section id="about"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-7xl w-full">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="about.title">About Me</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-key="about.subtitle">
+            Passionate about technology, innovation, and building exceptional teams</p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div class="fun-fact-card" id="fun-fact-card" tabindex="0" aria-label="Click for another fun fact">
+              Fun fact: Rangga loves coffee, but his stomach sometimes disagrees. Still, he keeps sipping like code
+              depends on it..
+            </div>
+            <p data-lang-key="about.description1">
+              Hi, I’m Rangga Prastio, a frontend engineer and tech consultant with 6+ years of experience building
+              modern web, mobile, and desktop applications.
+              My core focus is frontend development using React, React Native, Angular, and Tailwind, but I also work
+              across the full stack with tools like Laravel, Express, PostgreSQL, MongoDB, Electron, and even VB.NET.
+            </p>
+            <p data-lang-key="about.description2">
+              Over the past few years, I’ve led frontend teams, helped shape technical direction, and worked closely
+              with cross-functional teams to deliver scalable and maintainable products.
+              I enjoy solving real-world problems with clean code, thoughtful design, and strong collaboration.
+            </p>
+            <p data-lang-key="about.description3">
+              I'm open to working with teams or businesses that want to build or improve digital products.
+              Whether it's launching something new or scaling an existing platform, I focus on creating reliable,
+              user-first solutions that deliver real value.
+            </p>
+            <a href="#services"
+              class="btn-primary inline-block mt-4 px-6 py-3 rounded-full font-semibold gradient-primary text-white hover:scale-105 hover:shadow-2xl transition-all duration-300"
+              data-lang-key="services.seeMyServices">
+              See My Services
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="stat-card glass-effect rounded-2xl px-4 md:px-8 py-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              <div class="stat-number text-5xl font-black text-gradient-accent mb-2">6+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 px-4 md:px-0" data-lang-key="about.stats.experience">
+                Years
+                Experience</div>
+            </div>
+            <div
+              class="stat-card glass-effect rounded-2xl px-4 md:px-8 py-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              <div class="stat-number text-5xl font-black text-gradient-accent mb-2">20+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 px-4 md:px-0" data-lang-key="about.stats.projects">
+                Projects
+                Completed</div>
+            </div>
+            <div
+              class="stat-card glass-effect rounded-2xl px-4 md:px-8 py-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              <div class="stat-number text-5xl font-black text-gradient-accent mb-2">7+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 px-4 md:px-0" data-lang-key="about.stats.team">Team
+                Members Led
+              </div>
+            </div>
+            <div
+              class="stat-card glass-effect rounded-2xl px-4 md:px-8 py-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+              <div class="stat-number text-5xl font-black text-gradient-accent mb-2">100%</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 px-4 md:px-0"
+                data-lang-key="about.stats.satisfaction">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-7xl w-full">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="services.service">Services</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-key="services.serviceOffer">
+            I offer tailored solutions to help you grow, innovate, and succeed in tech.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Private Mentoring -->
+          <div
+            class="service-card glass-effect rounded-2xl p-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+            <div class="mb-4">
+              <i class="fas fa-user-graduate text-4xl text-blue-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2" data-lang-key="services.service1.serviceName">Private Mentoring</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6" data-lang-key="services.service1.serviceDesc">
+              Personalized 1-on-1 guidance for developers of all levels. Get help with career growth, code reviews, and
+              mastering modern web technologies.
+            </p>
+            <a href="#contact?subject=Private%20Mentoring%20Inquiry"
+              class="btn-secondary px-6 py-3 rounded-full font-semibold glass-effect hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2">
+              <i class="fas fa-envelope"></i>
+              <span data-lang-key="services.service1.serviceCTABtn">
+                Book Now
+              </span>
+            </a>
+          </div>
+          <!-- Tech Consulting -->
+          <div
+            class="service-card glass-effect rounded-2xl p-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+            <div class="mb-4">
+              <i class="fas fa-lightbulb text-4xl text-yellow-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2" data-lang-key="services.service2.serviceName">
+              Tech Consulting
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6" data-lang-key="services.service2.serviceDesc">
+              Clear, actionable tech insights to improve your product, process, and team. Let’s tackle challenges and
+              unlock your next stage of growth.
+            </p>
+            <a href="#contact?subject=Tech%20Consulting%20Inquiry"
+              class="btn-secondary px-6 py-3 rounded-full font-semibold glass-effect hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2">
+              <i class="fas fa-envelope"></i>
+              <span data-lang-key="services.service2.serviceCTABtn">
+                Start Consult
+              </span>
+            </a>
+          </div>
+          <!-- Development -->
+          <div
+            class="service-card glass-effect rounded-2xl p-8 text-center hover:scale-105 hover:shadow-2xl transition-all duration-300">
+            <div class="mb-4">
+              <i class="fas fa-code text-4xl text-green-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2" data-lang-key="services.service3.serviceName">
+              Software Development
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6" data-lang-key="services.service3.serviceDesc">
+              End-to-end web and mobile development. From MVPs to production apps, I deliver robust, scalable, and
+              beautiful solutions tailored to your needs.
+            </p>
+            <a href="#contact?subject=Development%20Inquiry"
+              class="btn-secondary px-6 py-3 rounded-full font-semibold glass-effect hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2">
+              <i class="fas fa-envelope"></i>
+              <span data-lang-key="services.service3.serviceCTABtn">
+                Bring Your Idea to Life
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-7xl w-full">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="skills.title">
+            Technical Skills
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-key="skills.subtitle">
+            Expertise across the full spectrum of modern web development
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-primary rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-primary rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fab fa-react text-blue-400"></i>
+              Frontend Development
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              React, Vue.js, Angular, TypeScript, Next.js, Nuxt.js, HTML5,
+              CSS3, Sass, Tailwind
+              CSS, Three.js, GSAP
+            </p>
+          </div>
+
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-secondary rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-secondary rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fas fa-server text-green-400"></i>
+              Backend & Database
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Node.js, Laravel, CodeIgniter, PostgreSQL, MongoDB, Redis,
+              REST APIs, Microservices, WebSockets
+            </p>
+          </div>
+
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-accent rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-accent rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fas fa-cloud text-purple-400"></i>
+              Cloud & DevOps
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              AWS, CI/CD, Jenkins, GitHub Actions
+            </p>
+          </div>
+
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-primary rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-primary rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fas fa-users text-orange-400"></i>
+              Leadership & Strategy
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Team Management, Agile/Scrum, Technical Architecture,
+              Product Strategy, Mentoring
+            </p>
+          </div>
+
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-secondary rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-secondary rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fas fa-mobile-alt text-pink-400"></i>
+              Mobile Development
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              React Native, Flutter, Progressive Web Apps,
+              Responsive Design, Performance Optimization
+            </p>
+          </div>
+
+          <div
+            class="skill-card glass-effect rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden reveal-on-scroll">
+            <div
+              class="absolute top-0 left-0 right-0 h-1 gradient-accent rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-left">
+            </div>
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-gradient-accent rounded-2xl transition-all duration-500 ease-out">
+            </div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+              <i class="fas fa-tools text-cyan-400"></i>
+              Tools & Technologies
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Git, Webpack, Vite, Testing Frameworks, Analytics,
+              Monitoring, Security Best Practices
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-4xl w-full">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="experience.title">
+            Work Experience
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300" data-lang-key="experience.subtitle">
+            A journey of growth, innovation, and technical excellence
+          </p>
+        </div>
+
+        <div class="relative">
+          <!-- Timeline Line -->
+          <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 gradient-primary transform md:-translate-x-0.5">
+          </div>
+
+          <!-- Timeline Items -->
+          <div class="space-y-12">
+            <div class="timeline-item flex items-center relative md:justify-end reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Chief Technology Officer</h3>
+                <p class="text-blue-400 font-semibold mb-3">Be Management | 2024 - Present</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.bemanagement">
+                  Leading technical strategy and development teams across multiple products.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 md:mr-auto glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Lead Development</h3>
+                <p class="text-blue-400 font-semibold mb-3">Hubbly.io | 2023 - 2024</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.hubbly">
+                  Leading technical strategy, planning, and execution of projects development.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative md:justify-end reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Senior Frontend Developer</h3>
+                <p class="text-blue-400 font-semibold mb-3">Nikel | Nov 2023 – Jan 2025</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.nikel">
+                  Led frontend development for company product application, team of 4 developers.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative md:justify-end reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 md:mr-auto glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Hybrid Mobile App Developer</h3>
+                <p class="text-blue-400 font-semibold mb-3">Esha Parama Technology | Mar 2023 – Nov 2023</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.ept">
+                  Modernized the codebase and set development standards.
+                  Delivered a full-featured B2B module faster
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative md:justify-end reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Senior Front-End Developer</h3>
+                <p class="text-blue-400 font-semibold mb-3">PT Maju Gemilang Indotech | Oct 2020 – Nov 2022</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.mgi">
+                  Led frontend and mobile development teams.
+                  Mentored developers and introduced standard practices
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 md:mr-auto glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Front-End Developer</h3>
+                <p class="text-blue-400 font-semibold mb-3">SALT | Dec 2019 – Jun 2020</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.salt">
+                  Managed and delivered three simultaneous client projects.
+                  Designed user journeys for multiple campaigns.
+                  Supported mobile development team to meet critical deadlines
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item flex items-center relative md:justify-end reveal-on-scroll">
+              <div
+                class="absolute left-6 md:left-1/2 w-4 h-4 gradient-primary rounded-full transform md:-translate-x-2 shadow-lg">
+              </div>
+              <div
+                class="ml-16 md:ml-0 md:w-5/12 glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                <h3 class="text-xl font-bold mb-2">Android Developer</h3>
+                <p class="text-blue-400 font-semibold mb-3">Glovory Technologies Indonesia | May 2019 – Jul 2019</p>
+                <p class="text-gray-600 dark:text-gray-300" data-lang-key="experience.workDesc.glovory">
+                  Build a mini POS system for local merchants.
+                  Developed mobile app for local fish market business
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate py-16 reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-7xl w-full">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="portfolio.title">
+            My Portfolio
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-key="portfolio.subtitle">
+            A selection of my projects that showcase my skills and creativity
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Portfolio Hubbly.io -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"
+                alt="Hubbly.io Project" class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://hubbly.io" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Hubbly.io</h3>
+              <p class="text-gray-500 dark:text-gray-400">Next.js, Tailwind CSS, Zustand, WebSocket</p>
+            </div>
+          </div>
+          <!-- Portfolio Nikel LMS -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="Nikel Lending Portal - P2P Project" class="w-full h-56 object-cover" loading="lazy"
+                decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="#" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white transition-transform"
+                  data-lang-key="portfolio.privateProject">
+                  Company Closed Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Nikel Lending Portal</h3>
+              <p class="text-gray-500 dark:text-gray-400">Angular, Material, Tailwind CSS</p>
+            </div>
+          </div>
+          <!-- Portfolio TTG -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img
+                src="https://play-lh.googleusercontent.com/eW21y4mxcBZbAFacTFcKb7plaCNx5D1UyFjGuZF5jxgFYavObGaOZzmQeYtj7B5qrqQ=w5120-h2880-rw"
+                alt="Project 3" class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://play.google.com/store/apps/details?id=com.trac.tractogo&hl=id" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">TRACToGo</h3>
+              <p class="text-gray-500 dark:text-gray-400">React Native, Redux, TypeScript</p>
+            </div>
+          </div>
+          <!-- Portfolio Be Management Mobile -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img
+                src="https://play-lh.googleusercontent.com/NO4IEV4utRPdcaQBE24ZQfC7x9vCHbWR4CZRTNwbiyKt0wvaDhE0niOII92rAqEhksU=w5120-h2880-rw"
+                alt="Be Management Mobile App" class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://play.google.com/store/apps/details?id=com.mgindotech.bm" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Be Management Mobile</h3>
+              <p class="text-gray-500 dark:text-gray-400">React Native, Redux</p>
+            </div>
+          </div>
+          <!-- Portfolio Be Management Backofiice -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img src="https://i.postimg.cc/cLQR2d6B/image.png" alt="Be Management Project"
+                class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="http://be-management.id" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Be Management</h3>
+              <p class="text-gray-500 dark:text-gray-400">Angular, NgRx, Metronic, TypeScript, Express, MongoDB</p>
+            </div>
+          </div>
+          <!-- Portfolio My Orbit -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img
+                src="https://play-lh.googleusercontent.com/2rUfenLRyrCVldCNvbpSDcJilA-Mot4-FXDp6miTFkmcRpl3T5SSSig4rXfBaDEeKw=w5120-h2880-rw"
+                alt="My Orbit Application" class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://play.google.com/store/apps/details?id=com.myorbit&hl=id" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                My Orbit Mobile
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                React Native, Redux, Native Base
+              </p>
+            </div>
+          </div>
+          <!-- Portfolio Nutriclub -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img src="https://i.postimg.cc/MH9R0YZc/image.png" alt="Nutriclub Website"
+                class="w-full h-56 object-cover" loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://www.nutriclub.co.id/" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                Nutriclub Website
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                JQuery, Bootstrap, HTML, CSS, Gulp
+              </p>
+            </div>
+          </div>
+          <!-- Portfolio SGM -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img src="https://i.postimg.cc/J00t8Cmn/image.png" alt="SGM Website" class="w-full h-56 object-cover"
+                loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://www.generasimaju.co.id/" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                SGM Website
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                JQuery, Bootstrap, HTML, CSS, Gulp
+              </p>
+            </div>
+          </div>
+          <!-- Portfolio Bebeclub -->
+          <div
+            class="portfolio-card glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 reveal-on-scroll">
+            <div class="relative">
+              <img src="https://i.postimg.cc/h4YtmwcL/image.png" alt="Bebeclub Website" class="w-full h-56 object-cover"
+                loading="lazy" decoding="async">
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <a href="https://bebeclub.co.id" target="_blank"
+                  class="px-4 py-2 rounded-full font-semibold glass-effect text-black dark:text-white hover:scale-110 transition-transform"
+                  data-lang-key="portfolio.viewCTA">
+                  View Project
+                </a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                Bebeclub Website
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400">
+                JQuery, Bootstrap, HTML, CSS, Gulp
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section (add Copy Email button) -->
+    <!-- Find the email input and add a button next to it -->
+    <section id="contact"
+      class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 section-animate py-16 reveal-on-scroll py-8 sm:py-12 lg:py-20">
+      <div class="max-w-4xl w-full">
+        <div class="text-center mb-16">
+          <h2 class="pb-1 text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-gradient-primary"
+            data-lang-key="contact.title">
+            Get In Touch
+          </h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto" data-lang-key="contact.subtitle">
+            Have a project in mind or just want to say hi?
+            I'd love to hear from you.
+          </p>
+        </div>
+
+        <div class="glass-effect rounded-2xl p-8 md:p-12">
+          <form action="https://formspree.io/f/mblypbqy" method="POST" target="_blank">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <input type="text" placeholder="Your Name" name="name" required
+                class="w-full bg-black/5 dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 p-4 rounded-lg border border-black/10 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+              <input type="email" placeholder="Your Email" name="email" required
+                class="w-full bg-black/5 dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 p-4 rounded-lg border border-black/10 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+            </div>
+            <div class="mb-6">
+              <input type="text" placeholder="Subject" name="subject" required
+                class="w-full bg-black/5 dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 p-4 rounded-lg border border-black/10 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+            </div>
+            <div class="mb-8">
+              <textarea placeholder="Your Message" name="message" rows="6" required
+                class="w-full bg-black/5 dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 p-4 rounded-lg border border-black/10 dark:border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit"
+                class="btn-primary px-8 py-4 rounded-full font-semibold gradient-primary text-white hover:scale-105 hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center gap-3">
+                <i class="fas fa-paper-plane"></i>
+                <span data-lang-key="contact.send">
+                  Send Message
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-effect py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p class="text-gray-500 dark:text-gray-400">&copy; 2024 Rangga Prastio. All Rights Reserved.</p>
+          <div class="flex space-x-6">
+            <a href="https://github.com/hikimo" target="_blank"
+              class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                class="fab fa-github fa-lg"></i></a>
+            <a href="https://www.linkedin.com/in/hikidev/" target="_blank"
+              class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                class="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://t.me/hikode" target="_blank"
+              class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                class="fab fa-telegram fa-lg"></i></a>
+
+            </a>
+            <a href="https://www.facebook.com/rangga.prastio.79" target="_blank"
+              class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://www.instagram.com/rangga_prastio/"
+              class="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"><i
+                class="fab fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal-overlay"
+      class="settings-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/50 hidden">
+      <div
+        class="settings-modal glass-effect rounded-2xl w-full max-w-md m-4 transform-gpu translate-y-12 scale-95 opacity-0">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Settings</h2>
+            <button id="settings-close-btn" class="p-2 -mr-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Theme Setting -->
+            <div>
+              <label class="block text-sm font-medium mb-2">Theme</label>
+              <div id="theme-setting" class="grid grid-cols-3 gap-2 rounded-lg p-1 bg-black/5 dark:bg-white/10">
+                <button data-theme="light" class="p-2 rounded-md text-sm">Light</button>
+                <button data-theme="dark" class="p-2 rounded-md text-sm">Dark</button>
+                <button data-theme="system" class="p-2 rounded-md text-sm">System</button>
+              </div>
+            </div>
+
+            <!-- 3D Background Setting -->
+            <div class="flex justify-between items-center">
+              <label for="background-toggle" class="text-sm font-medium">3D Background</label>
+              <button id="background-toggle" class="relative w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full">
+                <span
+                  class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="./assets/app.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDxDrRPziC5s2WGIq7qcpzc9E2I4g1DwwE",
+      authDomain: "rangga-personal-web.firebaseapp.com",
+      projectId: "rangga-personal-web",
+      storageBucket: "rangga-personal-web.firebasestorage.app",
+      messagingSenderId: "806637736971",
+      appId: "1:806637736971:web:12726fab4ff3573645a30e",
+      measurementId: "G-8LBTMQF54M"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
+
 </html>
